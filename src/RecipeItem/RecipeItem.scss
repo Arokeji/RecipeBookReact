@@ -1,0 +1,33 @@
+.recipe {
+    
+    &__item {
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 33%;
+        padding: 10px;
+        margin: 10px 0px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__picture{
+
+    }
+
+    &__image {
+        width: 100px;
+    }
+
+    &__info {
+        text-align: left;
+    }
+
+    &__title {
+        font-size: 12px;
+    }
+
+    &__numpeople {
+        font-size: 12px;
+    }
+}
