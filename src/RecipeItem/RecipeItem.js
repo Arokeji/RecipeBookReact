@@ -1,6 +1,7 @@
+import React from 'react';
 import './RecipeItem.scss';
 
-export const RecipeItem = ({recipe, selectRecipe}) => {
+export const RecipeItem = React.memo(({recipe, selectRecipe}) => {
 
     return (
         <div className='recipe__item' onClick={() => selectRecipe(recipe)}>
@@ -13,4 +14,4 @@ export const RecipeItem = ({recipe, selectRecipe}) => {
             </div>
         </div>
     );
-}
+})

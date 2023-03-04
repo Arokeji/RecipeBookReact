@@ -56,12 +56,7 @@
       "name": "Pancake",
       "numPeople": "4",
       "imageUrl": "https://www.shutterstock.com/image-photo/sweet-homemade-stack-pancakes-butter-600w-791630443.jpg",
-      "ingredients": [
-        {
-          "name": "Mantequilla",
-          "quantity": "1 trozo"
-        }
-      ],
+      "ingredients": [],
       "id": 3
     },
     {
@@ -76,6 +71,14 @@
         {
           "name": "Chocolate",
           "quantity": "400 grs"
+        },
+        {
+          "name": "Maria",
+          "quantity": "2 cogollos"
+        },
+        {
+          "name": "Azucar",
+          "quantity": "2 cucharadas"
         }
       ],
       "id": 4
@@ -101,6 +104,13 @@
       "name": "Receta sin ingredientes",
       "numPeople": "2",
       "imageUrl": "No image",
+      "ingredients": []
+    },
+    {
+      "id": 7,
+      "name": "Otra receta",
+      "numPeople": "4",
+      "imageUrl": "Sin imagen",
       "ingredients": []
     }
   ]

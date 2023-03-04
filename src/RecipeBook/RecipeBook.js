@@ -40,7 +40,7 @@ export const RecipeBook = () => {
             .then(data => setRecipeList(updateRecipeList));
 
 
-    })
+    }, [recipesList])
 
     const addIngredient = React.useCallback((name, quantity) => {
         const updatedRecipe = {
@@ -64,7 +64,7 @@ export const RecipeBook = () => {
         })
             .then(response => response.json())
             .then(() => setCurrentRecipe(updatedRecipe));
-    })
+    } , [currentRecipe])
 
     const deleteIngredient = React.useCallback((index) => {
         const updatedRecipe = { ...currentRecipe };
@@ -83,17 +83,17 @@ export const RecipeBook = () => {
         })
             .then(response => response.json())
             .then(() => setCurrentRecipe(updatedRecipe));
-    })
+    } , [currentRecipe])
 
-    const getRecipesApi = React.useCallback(() => {
+    const getRecipesApi = () => {
         fetch(API_URL)
             .then(response => response.json())
             .then(data => setRecipeList(data));
-    })
+    }
 
     React.useEffect(() => {
         getRecipesApi();
-    }, []);
+    });
 
     return (
         <div className='recipe'>
