@@ -18,13 +18,14 @@ export const RecipeBook = () => {
 
     console.log(recipesList.length);
 
-    const addRecipe = (name, people, urlImg) => {
+    const addRecipe = React.useCallback((name, people, urlImg) => {
    
         const newRecipe = {
             id: recipesList.length + 1, 
             name: name.current.value,
             numPeople: people.current.value,
-            imageUrl: urlImg.current.value
+            imageUrl: urlImg.current.value,
+            ingredients: []
         }
         console.log(newRecipe);
         const updateRecipeList = [...recipesList, newRecipe]
@@ -39,9 +40,9 @@ export const RecipeBook = () => {
             .then(data => setRecipeList(updateRecipeList));
 
 
-    }
+    })
 
-    const addIngredient = (name, quantity) => {
+    const addIngredient = React.useCallback((name, quantity) => {
         const updatedRecipe = {
             ...currentRecipe,
             ingredients: [...currentRecipe.ingredients,
@@ -63,9 +64,9 @@ export const RecipeBook = () => {
         })
             .then(response => response.json())
             .then(() => setCurrentRecipe(updatedRecipe));
-    }
+    })
 
-    const deleteIngredient = (index) => {
+    const deleteIngredient = React.useCallback((index) => {
         const updatedRecipe = { ...currentRecipe };
         //Rehacer con filter
         const updatedIngredients = [...currentRecipe.ingredients];
@@ -82,13 +83,13 @@ export const RecipeBook = () => {
         })
             .then(response => response.json())
             .then(() => setCurrentRecipe(updatedRecipe));
-    }
+    })
 
-    const getRecipesApi = () => {
+    const getRecipesApi = React.useCallback(() => {
         fetch(API_URL)
             .then(response => response.json())
             .then(data => setRecipeList(data));
-    }
+    })
 
     React.useEffect(() => {
         getRecipesApi();

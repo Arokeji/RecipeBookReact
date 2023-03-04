@@ -56,7 +56,12 @@
       "name": "Pancake",
       "numPeople": "4",
       "imageUrl": "https://www.shutterstock.com/image-photo/sweet-homemade-stack-pancakes-butter-600w-791630443.jpg",
-      "ingredients": [],
+      "ingredients": [
+        {
+          "name": "Mantequilla",
+          "quantity": "1 trozo"
+        }
+      ],
       "id": 3
     },
     {
@@ -93,13 +98,10 @@
     },
     {
       "id": 6,
-      "name": "Hola",
+      "name": "Receta sin ingredientes",
       "numPeople": "2",
-      "imageUrl": "Imagen",
-      "ingredients": {
-        "name": "Sal",
-        "quantity": "1 gr"
-      }
+      "imageUrl": "No image",
+      "ingredients": []
     }
   ]
 }
