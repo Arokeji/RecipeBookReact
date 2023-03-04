@@ -1,7 +1,7 @@
 import './RecipeItem.scss';
 
 export const RecipeItem = ({recipe, selectRecipe}) => {
-    
+
     return (
         <div className='recipe__item' onClick={() => selectRecipe(recipe)}>
             <div className='recipe__picture'>

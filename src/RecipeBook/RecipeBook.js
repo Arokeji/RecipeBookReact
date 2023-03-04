@@ -10,32 +10,104 @@ export const RecipeBook = () => {
 
     const [recipesList, setRecipeList] = React.useState([]);
 
-    const [currentRecipe, setCurrentRecipe] = React.useState();
+    const [currentRecipe, setCurrentRecipe] = React.useState(null);
 
     const selectRecipe = (recipe) => {
-        console.log(recipe);
         setCurrentRecipe(recipe);
+    }
+
+    console.log(recipesList.length);
+
+    const addRecipe = (name, people, urlImg) => {
+   
+        const newRecipe = {
+            id: recipesList.length + 1, 
+            name: name.current.value,
+            numPeople: people.current.value,
+            imageUrl: urlImg.current.value
+        }
+        console.log(newRecipe);
+        const updateRecipeList = [...recipesList, newRecipe]
+        fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify(newRecipe),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => setRecipeList(updateRecipeList));
+
+
+    }
+
+    const addIngredient = (name, quantity) => {
+        const updatedRecipe = {
+            ...currentRecipe,
+            ingredients: [...currentRecipe.ingredients,
+            {
+                name: name.current.value,
+                quantity: quantity.current.value
+            }]
+        }
+
+        name.current.value = "";
+        quantity.current.value = "";
+
+        fetch(API_URL + "/" + currentRecipe.id, {
+            method: "PUT",
+            body: JSON.stringify(updatedRecipe),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(() => setCurrentRecipe(updatedRecipe));
+    }
+
+    const deleteIngredient = (index) => {
+        const updatedRecipe = { ...currentRecipe };
+        //Rehacer con filter
+        const updatedIngredients = [...currentRecipe.ingredients];
+        updatedIngredients.splice(index, 1);
+        updatedRecipe.ingredients = updatedIngredients;
+        console.log(updatedRecipe);
+
+        fetch(API_URL + "/" + currentRecipe.id, {
+            method: "PUT",
+            body: JSON.stringify(updatedRecipe),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(() => setCurrentRecipe(updatedRecipe));
     }
 
     const getRecipesApi = () => {
         fetch(API_URL)
-        .then(response => response.json())
-        .then(data => setRecipeList(data));
+            .then(response => response.json())
+            .then(data => setRecipeList(data));
     }
 
     React.useEffect(() => {
         getRecipesApi();
-    },[]);
+    }, []);
 
     return (
         <div className='recipe'>
-            <NewRecipe/>
-            <ListRecipe 
-                recipesList={recipesList} 
+            <NewRecipe
+                addRecipe={addRecipe}
+            />
+            <ListRecipe
+                recipesList={recipesList}
                 selectRecipe={selectRecipe}
             />
-            <DetailsRecipe 
-                currentRecipe={currentRecipe}/>
+            <DetailsRecipe
+                currentRecipe={currentRecipe}
+                addIngredient={addIngredient}
+                deleteIngredient={deleteIngredient}
+            />
         </div>
     );
 }

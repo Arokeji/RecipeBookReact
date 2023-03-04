@@ -1,0 +1,38 @@
+.details {
+    max-width: 33%;
+    padding: 10px;
+
+    &__header {
+
+    }
+
+    &__image {
+        width: 100%;
+    } 
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
+
+thead {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+tr {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+}

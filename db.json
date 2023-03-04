@@ -83,9 +83,23 @@
         {
           "name": "Pollo entero crudo",
           "quantity": "1"
+        },
+        {
+          "name": "Limon",
+          "quantity": "2 uds"
         }
       ],
       "id": 5
+    },
+    {
+      "id": 6,
+      "name": "Hola",
+      "numPeople": "2",
+      "imageUrl": "Imagen",
+      "ingredients": {
+        "name": "Sal",
+        "quantity": "1 gr"
+      }
     }
   ]
 }

@@ -1,0 +1,25 @@
+.newrecipe {
+
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 33%;
+
+    &__header {
+
+    }
+
+    &__input {
+        margin-bottom: 10px;
+        width: 80%;
+    }
+
+    &__header {
+        
+    }
+
+    &__button {
+        padding: 5px;
+        width: 100px;
+    }
+}
